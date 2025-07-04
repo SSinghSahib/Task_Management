@@ -38,19 +38,6 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new NotFoundException("Benutzer nicht gefunden"));
         return userMapper.toDto(entity);  // Nur DTO geht zurück an den Client
     }
-    /**
-    public User findById(Long id) {
-        return benutzerRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Benutzer mit ID " + id + " nicht gefunden"));
-    }  **/
-
-    /**
-    @Override
-    public UserDto getUserById(Long id) {
-        User entity = userRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Benutzer nicht gefunden"));
-        return userMapper.toDto(entity);
-    } **/
 
     @Override
     public List<UserDto> getAllUsers() {
@@ -62,14 +49,6 @@ public class UserServiceImpl implements UserService {
         }
         return userDtoListe;
     }
-    /*** Alternativ getAllUsers
-    public List<UserDto> getAllUsers() {
-        List<User> userListe = userRepository.findAll();
-        return u
-     serListe.stream()
-                .map(UserMapper::toDto)
-                .toList();
-    }  ***/
 
     @Override
     public void deleteUser(Long id) {
