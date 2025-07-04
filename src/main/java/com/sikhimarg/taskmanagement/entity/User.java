@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "users") // explizit, da "user" in manchen DBs reserviert ist
+@Table(name = "users")
 public class User {
 
     @Id
@@ -18,7 +18,6 @@ public class User {
 
     @Column(unique = true,nullable = false)
     private String email;
-    // Passwort (wird verschlüsselt gespeichert – später mit Security)
     private String passwort;
 
 
@@ -28,7 +27,6 @@ public class User {
        um Entities aus der Datenbank zu erzeugen. ***/
 
     // Getter
-
     public Long getId() {
         return id;
     }
@@ -73,6 +71,6 @@ public class User {
      Ein User hat viele Tasks
      Ein Task gehört zu genau einem User ***/
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "benutzer", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks = new ArrayList<>();
 }

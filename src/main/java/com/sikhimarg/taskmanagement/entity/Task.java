@@ -1,6 +1,8 @@
 package com.sikhimarg.taskmanagement.entity;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
@@ -12,12 +14,15 @@ public class Task {
     private String title;
     private String beschreibung;    //description
     private boolean erledigt = false;
+    @Column(name = "faelligkeit")
+    private LocalDate faelligkeit;
+
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User benutzer;
 
-    // ✅ Das hier muss vorhanden sein:✅ Wichtige Getter/Setter
+    // Das hier muss vorhanden sein: Getter/Setter
     public User getBenutzer() {
         return benutzer;
     }
@@ -26,10 +31,7 @@ public class Task {
         this.benutzer = benutzer;
     }
 
-    // Kein Konstruktoren
-
     // Getter
-
     public Long getId() {
         return id;
     }
@@ -46,12 +48,11 @@ public class Task {
         return erledigt;
     }
 
-    public User getUser() {
-        return benutzer;
+    public LocalDate getFaelligkeit() {
+        return faelligkeit;
     }
 
     // Setter
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -64,7 +65,7 @@ public class Task {
         this.erledigt = erledigt;
     }
 
-    public void setUser(User user) {
-        this.benutzer = user;
+    public void setFaelligkeit(LocalDate faelligkeit) {
+        this.faelligkeit = faelligkeit;
     }
 }

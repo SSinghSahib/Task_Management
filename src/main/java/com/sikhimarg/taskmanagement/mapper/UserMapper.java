@@ -3,12 +3,14 @@ package com.sikhimarg.taskmanagement.mapper;
 import com.sikhimarg.taskmanagement.dto.CreateUserRequest;
 import com.sikhimarg.taskmanagement.dto.UserDto;
 import com.sikhimarg.taskmanagement.entity.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserMapper {
 
     // Wandelt ein User-Entity in ein UserDto um
     // Entity → DTO (für Antwort an den Client)
-    public static UserDto toDto(User entity){
+    public UserDto toDto(User entity){
         return new UserDto(
                 entity.getId(),
                 entity.getVorname(),
@@ -19,7 +21,7 @@ public class UserMapper {
     }
 
     // DTO → Entity (beim Registrieren oder Speichern)
-    public static User toEntity(CreateUserRequest dto){
+    public User toEntity(CreateUserRequest dto){
         User user = new User();
         user.setVorname(dto.getVorname());
         user.setNachname(dto.getNachname());
@@ -28,7 +30,7 @@ public class UserMapper {
         return user;
     }
 
-    // 🔁 DTO → bestehende Entity aktualisieren (z.B. für PUT)
+    // DTO → bestehende Entity aktualisieren (z.B. für PUT)
     public void updateEntityFromDto(CreateUserRequest dto, User entity){
         if (dto == null || entity == null){
             return;// Wenn eines der Objekte null ist, wird nichts gemacht

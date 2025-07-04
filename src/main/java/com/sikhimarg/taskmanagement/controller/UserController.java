@@ -19,31 +19,31 @@ public class UserController {
         this.userService = userService;
     }
 
-    // 📌 POST /api/users
+    // POST /api/users
     @PostMapping
     public ResponseEntity<UserDto> create(@Valid @RequestBody CreateUserRequest request) {
         UserDto createdUser = userService.createUser(request);
         return ResponseEntity.ok(createdUser);
     }
-    // 📌 GET /api/users
+    // GET /api/users
     @GetMapping
     public List<UserDto> getAll(){
         return userService.getAllUsers();// ➤ Gibt alle Benutzer als DTOs zurück
     }
 
-    // 📌 GET /api/users/{id}
+    // GET /api/users/{id}
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getById(@PathVariable Long id){
         UserDto dto = userService.findById(id);
         return ResponseEntity.ok(dto);
     }
-    // 📌 PUT /api/users/{id}
+    // PUT /api/users/{id}
     @PutMapping("/{id}")
     public ResponseEntity<UserDto> update(@PathVariable Long id, @Valid @RequestBody CreateUserRequest updatedData){
         UserDto updated = userService.updateUser(id, updatedData);
         return ResponseEntity.ok(updated);// ➤ 200 OK + aktualisierter Benutzer
     }
-    // 📌 DELETE /api/users/{id}
+    // DELETE /api/users/{id}
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id){
         userService.deleteUser(id);

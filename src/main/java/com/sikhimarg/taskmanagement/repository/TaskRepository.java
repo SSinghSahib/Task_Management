@@ -10,9 +10,4 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    // Alle Aufgaben eines bestimmten Benutzers
-    List<Task> findByUser(User user);
-
-    // Optional: Aufgaben nach "done"-Status
-    List<Task> findByUserAndDone(User user, boolean done);
 }

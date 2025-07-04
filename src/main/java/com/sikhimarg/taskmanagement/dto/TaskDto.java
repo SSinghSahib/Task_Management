@@ -1,5 +1,7 @@
 package com.sikhimarg.taskmanagement.dto;
 
+import java.time.LocalDate;
+
 public class TaskDto {
 
     private Long id;
@@ -7,18 +9,21 @@ public class TaskDto {
     private String beschreibung;
     private boolean erledigt;
     private Long benutzerId;
+    private LocalDate faelligkeit;
 
     // Konstruktor
-    public TaskDto(Long id, String titel, String beschreibung, boolean erledigt, Long benutzerId) {
+    public TaskDto(){}
+
+    public TaskDto(Long id, String titel, String beschreibung, boolean erledigt, Long benutzerId, LocalDate faelligkeit) {
         this.id = id;
         this.titel = titel;
         this.beschreibung = beschreibung;
         this.erledigt = erledigt;
         this.benutzerId = benutzerId;
+        this.faelligkeit = faelligkeit;
     }
 
     // Getter
-
     public Long getId() {
         return id;
     }
@@ -38,10 +43,11 @@ public class TaskDto {
     public Long getBenutzerId() {
         return benutzerId;
     }
+
+    public LocalDate getFaelligkeit() {
+        return faelligkeit;
+    }
+
 }
-/***💡 Anmerkung: Nur Getter?
- Ja – da DTOs meist nur zum Lesen verwendet werden, reichen Getter.
- Wenn du in deiner Anwendung Setter brauchst
- (z.B. für automatische Befüllung oder Tests),
- kannst du sie natürlich ergänzen.
-***/
+
+

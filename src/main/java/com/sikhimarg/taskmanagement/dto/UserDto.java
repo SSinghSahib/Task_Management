@@ -6,19 +6,16 @@ public class UserDto {
     private String vorname;
     private String nachname;
     private String email;
-//    private String passwort;
-    // Konstruktor
 
+    // Konstruktor
     public UserDto(Long id, String vorname, String nachname, String email) {
         this.id = id;
         this.vorname = vorname;
         this.nachname = nachname;
         this.email = email;
-//        this.passwort = passwort;
     }
 
     // Getter
-
     public Long getId() {
         return id;
     }
@@ -34,9 +31,5 @@ public class UserDto {
     public String getEmail() {
         return email;
     }
-
-//    public String getPasswort() {
-//        String getPasswort;
-//    }
 }
 

@@ -1,23 +1,17 @@
 package com.sikhimarg.taskmanagement.dto;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class CreateTaskRequest {
+public class UpdateTaskRequest {
 
-    // Titel der Aufgabe – Pflichtfeld
     @NotBlank(message = "Titel darf nicht leer sein")
-
     private String titel;
-    private String beschreibung;  // Beschreibung der Aufgabe – optional
-
-    // ID des Benutzers, dem die Aufgabe gehört – Pflichtfeld
-    @NotNull(message = "Benutzer-ID darf nicht null sein")
-    private Long benutzerId;
+    private String beschreibung;
     private LocalDate faelligkeit;
+    private boolean erledigt; //Beim Bearbeiten darf der Status gesetzt werden
 
     // Getter
 
@@ -29,17 +23,17 @@ public class CreateTaskRequest {
         return beschreibung;
     }
 
-    public Long getBenutzerId() {
-        return benutzerId;
-    }
-
     public LocalDate getFaelligkeit() {
         return faelligkeit;
     }
 
+    public boolean isErledigt() {
+        return erledigt;
+    }
+
     // Setter
 
-    public void setTitel(String titel) {
+    public void setTitle(String titel) {
         this.titel = titel;
     }
 
@@ -47,12 +41,11 @@ public class CreateTaskRequest {
         this.beschreibung = beschreibung;
     }
 
-    public void setBenutzerId(Long benutzerId) {
-        this.benutzerId = benutzerId;
-    }
-
     public void setFaelligkeit(LocalDate faelligkeit) {
         this.faelligkeit = faelligkeit;
     }
 
+    public void setErledigt(boolean erledigt) {
+        this.erledigt = erledigt;
+    }
 }
