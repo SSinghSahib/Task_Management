@@ -2,6 +2,7 @@ package com.sikhimarg.taskmanagement.controller;
 
 import com.sikhimarg.taskmanagement.dto.CreateUserRequest;
 import com.sikhimarg.taskmanagement.dto.UserDto;
+import com.sikhimarg.taskmanagement.entity.User;
 import com.sikhimarg.taskmanagement.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -49,5 +50,24 @@ public class UserController {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();// ➤ 204 No Content (erfolgreich gelöscht)
     }
+
+    // Benutzer per E-Mail suchen
+
+    // GET /api/users/by-email?email=ms@ms.com
+//     @GetMapping("/by-email")
+    @GetMapping("/findByEmail")
+     public ResponseEntity<UserDto> getUserByEmail(@RequestParam String email) {
+     UserDto userDto = userService.findByEmail(email);
+     return ResponseEntity.ok(userDto);
+     }
+
+
+    // 🔎 GET /api/users/findByEmail?email=max@example.com
+//    @GetMapping("/findByEmail")
+//    public UserDto getUserByEmail(@RequestParam String email) {
+//        return userService.findByEmail(email);
+//    }
+
+
 
 }

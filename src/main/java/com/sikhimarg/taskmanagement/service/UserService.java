@@ -26,6 +26,6 @@ public interface UserService {
     UserDto updateUser(Long id, CreateUserRequest updatedData);
 
     // Benutzer per E-Mail und Passwort finden (z.B. Login)
-    User findByEmail(String email);
+    UserDto findByEmail(String email);
 
 }

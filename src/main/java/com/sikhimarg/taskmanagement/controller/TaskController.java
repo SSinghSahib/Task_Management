@@ -56,6 +56,7 @@ public class TaskController {
     }
 
     // Nur Status "erledigt" ändern (PUT mit Boolean-Query-Param)
+    @PutMapping("/{id}/status")
     public ResponseEntity<TaskDto> updateStatus(
             @PathVariable Long id,
             @RequestParam boolean erledigt){
