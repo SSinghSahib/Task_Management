@@ -10,7 +10,8 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")  // ➤ Alle Pfade
-                .allowedOrigins("http://localhost:4200")  // ➤ Erlaube z.B. Angular-Frontend
+                .allowedOrigins("http://localhost:5500", "http://127.0.0.1:5500")  // Bei Bedarf Frontend-URL angeben
+                /** .allowedOrigins("http://localhost:4200")  // ➤ Erlaube für Frontend **/
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*");
     }

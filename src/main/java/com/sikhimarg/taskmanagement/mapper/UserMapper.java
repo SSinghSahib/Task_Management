@@ -1,6 +1,7 @@
 package com.sikhimarg.taskmanagement.mapper;
 
 import com.sikhimarg.taskmanagement.dto.CreateUserRequest;
+import com.sikhimarg.taskmanagement.dto.UpdateUserRequest;
 import com.sikhimarg.taskmanagement.dto.UserDto;
 import com.sikhimarg.taskmanagement.entity.User;
 import org.springframework.stereotype.Component;
@@ -31,23 +32,17 @@ public class UserMapper {
     }
 
     // DTO → bestehende Entity aktualisieren (z.B. für PUT)
-    public void updateEntityFromDto(CreateUserRequest dto, User entity){
+    public void updateEntityFromDto(UpdateUserRequest dto, User entity){
         if (dto == null || entity == null){
             return;// Wenn eines der Objekte null ist, wird nichts gemacht
         }
         // Felder vom DTO ins bestehende Entity übertragen
-        entity.setVorname(dto.getVorname());
-        entity.setNachname(dto.getVorname());
-        entity.setEmail(dto.getEmail());
-        entity.setPasswort(dto.getPasswort());
+        if (dto.getVorname() != null) entity.setVorname(dto.getVorname());
+        if (dto.getNachname() != null) entity.setNachname(dto.getNachname());
+        if (dto.getEmail() != null) entity.setEmail(dto.getEmail());
+        if (dto.getPasswort() != null) entity.setPasswort(dto.getPasswort());
     }
-
 }
 
 
 
-/*** 🔒 Passwort-Hashing
- Wenn du später Sicherheit einbaust, solltest du in
- toEntity(...) nicht direkt
- das Klartext-Passwort setzen, sondern: ***/
-//user.setPasswort(passwordEncoder.encode(dto.getPasswort()));
